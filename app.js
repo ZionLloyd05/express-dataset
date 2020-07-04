@@ -14,9 +14,6 @@ const appRouter = require('./routes/index');
 
 const app = express();
 
-// Setup database
-require('./db/database');
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
