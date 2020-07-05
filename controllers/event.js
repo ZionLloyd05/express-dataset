@@ -1,6 +1,7 @@
 const models = require('../models');
 const actorController = require('./actor');
 const repoController = require('./repo');
+const IsEmpty = require('../helpers/isEmpty');
 
 const getAllEvents = async () => {
   const events = await models.event.findAll({
@@ -9,18 +10,23 @@ const getAllEvents = async () => {
       { model: models.repo, as: 'repo' },
     ],
     order: [['id', 'ASC']],
+    attributes: {
+      exclude: ['actorId', 'repoId'],
+    },
   });
   return events;
 };
 
-const addEvent = async (eventToCreate) => {
+const addEvent = async (eventForCreate) => {
   try {
     // extract actor and repo data
-    const { actor, repo } = eventToCreate;
-    const { id, type, created_at } = eventToCreate;
+    const { actor, repo } = eventForCreate;
+    const { id, type, created_at } = eventForCreate;
 
     const actorId = actor.id;
     const repoId = repo.id;
+
+    console.log(created_at);
 
     // setup event model
     let newEvent = {
@@ -28,7 +34,7 @@ const addEvent = async (eventToCreate) => {
       type,
       actorId,
       repoId,
-      createdAt: created_at,
+      created_at,
     };
 
     // setup a transaction
@@ -56,6 +62,9 @@ const getEventsByActor = async (actorId) => {
       { model: models.repo, as: 'repo' },
     ],
     order: [['id', 'ASC']],
+    attributes: {
+      exclude: ['actorId', 'repoId'],
+    },
   });
 
   return events;

@@ -2,10 +2,10 @@ const eventController = require('../controllers/event');
 const actorController = require('../controllers/actor');
 const IsEmpty = require('../helpers/isEmpty');
 
-const createEvent = async (eventToCreate) => {
+const createEvent = async (eventForCreate) => {
   try {
     //   Check if event already exist
-    const eventInDb = await eventController.getEventById(eventToCreate.id);
+    const eventInDb = await eventController.getEventById(eventForCreate.id);
 
     if (!IsEmpty(eventInDb)) {
       const statusCode = 400;
@@ -15,7 +15,7 @@ const createEvent = async (eventToCreate) => {
     }
 
     // create event if it doesn't exist
-    const event = await eventController.addEvent(eventToCreate);
+    const event = await eventController.addEvent(eventForCreate);
 
     const statusCode = 201;
     return {

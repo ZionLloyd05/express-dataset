@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       actorId: DataTypes.INTEGER,
       repoId: DataTypes.INTEGER,
-      created_at: DataTypes.DATE,
+      created_at: DataTypes.STRING,
     },
     { timestamps: false }
   );
