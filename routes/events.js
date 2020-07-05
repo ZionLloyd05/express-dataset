@@ -15,14 +15,21 @@ router.get('/ping', (req, res) => {
 // @desc    Get all event route
 // @access  Public
 router.get('/', async (req, res) => {
-  try {
-    const result = await eventService.getAllEvents();
-    const { statusCode, toReturn } = result;
+  const result = await eventService.getAllEvents();
+  const { statusCode, toReturn } = result;
 
-    res.status(statusCode).json(toReturn);
-  } catch (error) {
-    console.error(error);
-  }
+  res.status(statusCode).json(toReturn);
+});
+
+// @route   GET /events/actors/{actorId}
+// @desc    Get all event route
+// @access  Public
+router.get('/actors/:id', async (req, res) => {
+  const actorId = req.params.id;
+  const result = await eventService.getEventsByActor(actorId);
+  const { statusCode, toReturn } = result;
+
+  res.status(statusCode).json(toReturn);
 });
 
 // @route   POST /events

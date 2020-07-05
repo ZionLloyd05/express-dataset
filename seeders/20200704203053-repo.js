@@ -18,15 +18,11 @@ module.exports = {
         id: 333,
         name: 'test_repo',
         url: 'https://github.com/ZionLloyd05/shop.API',
-        createdAt: new Date(),
-        updatedAt: new Date(),
       },
       {
         id: 222,
         name: 'test_repo2',
         url: 'https://github.com/ZionLloyd05/shop.API',
-        createdAt: new Date(),
-        updatedAt: new Date(),
       },
     ]);
   },

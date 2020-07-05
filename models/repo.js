@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       name: DataTypes.STRING,
       url: DataTypes.STRING,
     },
-    {}
+    { timestamps: false }
   );
   repo.associate = function (models) {
     // associations can be defined here

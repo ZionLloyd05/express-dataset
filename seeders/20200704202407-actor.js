@@ -17,15 +17,11 @@ module.exports = {
         id: 121,
         login: 'dami123',
         avatar_url: 'https://avatars.com/2790311',
-        createdAt: new Date(),
-        updatedAt: new Date(),
       },
       {
         id: 3232,
         login: 'eazy123',
         avatar_url: 'https://avatars.com/2790311',
-        createdAt: new Date(),
-        updatedAt: new Date(),
       },
     ]);
   },

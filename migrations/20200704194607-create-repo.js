@@ -13,14 +13,6 @@ module.exports = {
       url: {
         type: Sequelize.STRING,
       },
-      createdAt: {
-        allowNull: true,
-        type: Sequelize.DATE,
-      },
-      updatedAt: {
-        allowNull: true,
-        type: Sequelize.DATE,
-      },
     });
   },
   down: (queryInterface, Sequelize) => {

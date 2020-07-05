@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       login: DataTypes.STRING,
       avatar_url: DataTypes.STRING,
     },
-    {}
+    { timestamps: false }
   );
   actor.associate = function (models) {
     // associations can be defined here

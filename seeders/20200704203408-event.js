@@ -18,16 +18,14 @@ module.exports = {
         type: 'meetUp',
         actorId: 121,
         repoId: 222,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        created_at: new Date(),
       },
       {
         id: 1876,
         type: 'hackaton',
         actorId: 121,
         repoId: 333,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        created_at: new Date(),
       },
     ]);
   },

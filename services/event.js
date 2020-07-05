@@ -1,4 +1,5 @@
 const eventController = require('../controllers/event');
+const actorController = require('../controllers/actor');
 const IsEmpty = require('../helpers/isEmpty');
 
 const createEvent = async (eventToCreate) => {
@@ -34,10 +35,54 @@ const getAllEvents = async () => {
     const events = await eventController.getAllEvents();
     const statusCode = 200;
     return {
-      toReturn: { status: 'success', data: events },
+      toReturn: { body: events },
       statusCode,
     };
   } catch (error) {
+    console.error(error);
+    const statusCode = 500;
+    return {
+      statusCode,
+    };
+  }
+};
+
+const getEventsByActor = async (actorId) => {
+  try {
+    const actor = await actorController.getActorById(actorId);
+
+    if (IsEmpty(actor)) {
+      const statusCode = 404;
+      return {
+        toReturn: { body: {} },
+        statusCode,
+      };
+    }
+
+    const events = await eventController.getEventsByActor(actorId);
+    const statusCode = 200;
+    return {
+      toReturn: { body: events },
+      statusCode,
+    };
+  } catch (error) {
+    console.error(error);
+    const statusCode = 500;
+    return {
+      statusCode,
+    };
+  }
+};
+
+const eraseAllEvents = async () => {
+  try {
+    await eventController.eraseAllEvents();
+    const statusCode = 200;
+    return {
+      statusCode,
+    };
+  } catch (error) {
+    console.error(error);
     const statusCode = 500;
     return {
       statusCode,
@@ -48,4 +93,6 @@ const getAllEvents = async () => {
 module.exports = {
   createEvent,
   getAllEvents,
+  eraseAllEvents,
+  getEventsByActor,
 };

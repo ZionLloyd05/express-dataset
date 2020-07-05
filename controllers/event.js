@@ -3,8 +3,11 @@ const actorController = require('./actor');
 const repoController = require('./repo');
 
 const getAllEvents = async () => {
-  console.log('got to controller');
   const events = await models.event.findAll({
+    include: [
+      { model: models.actor, as: 'actor' },
+      { model: models.repo, as: 'repo' },
+    ],
     order: [['id', 'ASC']],
   });
   return events;
@@ -45,9 +48,14 @@ const addEvent = async (eventToCreate) => {
   }
 };
 
-const getByActor = async (actorId) => {
+const getEventsByActor = async (actorId) => {
   const events = await models.event.findAll({
     where: { actorId },
+    include: [
+      { model: models.actor, as: 'actor' },
+      { model: models.repo, as: 'repo' },
+    ],
+    order: [['id', 'ASC']],
   });
 
   return events;
@@ -61,7 +69,7 @@ const getEventById = async (eventId) => {
   return event;
 };
 
-const eraseEvents = async () => {
+const eraseAllEvents = async () => {
   const deleted = await models.event.destroy({ truncate: true });
   return null;
 };
@@ -70,6 +78,6 @@ module.exports = {
   getAllEvents,
   getEventById,
   addEvent,
-  getByActor,
-  eraseEvents,
+  getEventsByActor,
+  eraseAllEvents,
 };

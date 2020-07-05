@@ -6,8 +6,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       actorId: DataTypes.INTEGER,
       repoId: DataTypes.INTEGER,
+      created_at: DataTypes.DATE,
     },
-    {}
+    { timestamps: false }
   );
   event.associate = (models) => {
     // associations can be defined here
