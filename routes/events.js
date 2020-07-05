@@ -11,11 +11,12 @@ router.get('/ping', (req, res) => {
   res.json({ status: 'success', data: 'nil' });
 });
 
+// @route   GET /events
+// @desc    Get all event route
+// @access  Public
 router.get('/', async (req, res) => {
   try {
-    console.log('got here');
     const result = await eventService.getAllEvents();
-    console.log(result);
     const { statusCode, toReturn } = result;
 
     res.status(statusCode).json(toReturn);
@@ -24,12 +25,16 @@ router.get('/', async (req, res) => {
   }
 });
 
+// @route   POST /events
+// @desc    Add event route
+// @params  Event Object
+// @access  Public
 router.post('/', async (req, res) => {
   const newEvent = req.body;
   const result = await eventService.createEvent(newEvent);
-  const { statusCode, toReturn } = result;
+  const { statusCode } = result;
 
-  res.status(statusCode).json(toReturn);
+  res.status(statusCode).json({});
 });
 
 module.exports = router;

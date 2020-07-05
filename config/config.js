@@ -1,4 +1,4 @@
-const { envVariables } = require('../../helpers');
+const { envVariables } = require('../helpers');
 
 const { dialect } = envVariables;
 

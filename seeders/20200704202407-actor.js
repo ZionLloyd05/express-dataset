@@ -12,19 +12,18 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-
-    return queryInterface.bulkInsert('repos', [
+    return queryInterface.bulkInsert('actors', [
       {
-        id: '333',
-        name: 'test_repo',
-        url: 'https://github.com/ZionLloyd05/shop.API',
+        id: 121,
+        login: 'dami123',
+        avatar_url: 'https://avatars.com/2790311',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        id: '222',
-        name: 'test_repo2',
-        url: 'https://github.com/ZionLloyd05/shop.API',
+        id: 3232,
+        login: 'eazy123',
+        avatar_url: 'https://avatars.com/2790311',
         createdAt: new Date(),
         updatedAt: new Date(),
       },

@@ -12,18 +12,20 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('actors', [
+    return queryInterface.bulkInsert('events', [
       {
-        id: '121',
-        login: 'dami123',
-        avatar_url: 'https://avatars.com/2790311',
+        id: 1982,
+        type: 'meetUp',
+        actorId: 121,
+        repoId: 222,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        id: '3232',
-        login: 'eazy123',
-        avatar_url: 'https://avatars.com/2790311',
+        id: 1876,
+        type: 'hackaton',
+        actorId: 121,
+        repoId: 333,
         createdAt: new Date(),
         updatedAt: new Date(),
       },

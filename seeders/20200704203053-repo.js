@@ -12,20 +12,19 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('events', [
+
+    return queryInterface.bulkInsert('repos', [
       {
-        id: '1982',
-        type: 'meetUp',
-        actorId: '121',
-        repoId: '222',
+        id: 333,
+        name: 'test_repo',
+        url: 'https://github.com/ZionLloyd05/shop.API',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        id: '1876',
-        type: 'hackaton',
-        actorId: '121',
-        repoId: '333',
+        id: 222,
+        name: 'test_repo2',
+        url: 'https://github.com/ZionLloyd05/shop.API',
         createdAt: new Date(),
         updatedAt: new Date(),
       },

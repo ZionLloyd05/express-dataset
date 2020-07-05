@@ -3,13 +3,11 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
+const { envVariables } = require('../helpers');
 const basename = path.basename(__filename);
-const envConfigs = require('../config/config');
 
-const env = process.env.NODE_ENV || 'development';
-const config = envConfigs[env];
+const env = envVariables.env || 'development';
 const db = {};
-
 let sequelize;
 
 if (env === 'development') {

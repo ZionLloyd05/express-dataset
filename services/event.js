@@ -1,4 +1,4 @@
-const eventController = require('../controllers/events');
+const eventController = require('../controllers/event');
 const IsEmpty = require('../helpers/isEmpty');
 
 const createEvent = async (eventToCreate) => {
@@ -9,7 +9,6 @@ const createEvent = async (eventToCreate) => {
     if (!IsEmpty(eventInDb)) {
       const statusCode = 400;
       return {
-        toReturn: { status: 'success', data: 'Event already exist' },
         statusCode,
       };
     }
@@ -19,14 +18,12 @@ const createEvent = async (eventToCreate) => {
 
     const statusCode = 201;
     return {
-      toReturn: { status: 'success', data: event },
       statusCode,
     };
   } catch (error) {
     console.error(error);
     const statusCode = 500;
     return {
-      toReturn: { status: 'failed', data: error },
       statusCode,
     };
   }
@@ -34,19 +31,15 @@ const createEvent = async (eventToCreate) => {
 
 const getAllEvents = async () => {
   try {
-    console.log('got to service');
     const events = await eventController.getAllEvents();
-    console.log(events);
     const statusCode = 200;
     return {
       toReturn: { status: 'success', data: events },
       statusCode,
     };
   } catch (error) {
-    console.error(error);
     const statusCode = 500;
     return {
-      toReturn: { status: 'failed', data: error },
       statusCode,
     };
   }

@@ -15,10 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       foriegnKey: 'actorId',
       as: 'actor',
     });
-    event.hasOne(models.repo, {
-      foriegnKey: 'actorId',
-      as: 'repo',
-    });
+    event.belongsTo(models.repo);
   };
   return event;
 };
