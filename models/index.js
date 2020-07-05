@@ -13,7 +13,11 @@ let sequelize;
 if (env === 'development') {
   sequelize = new Sequelize({ dialect: 'sqlite', storage: './event.db' });
 } else if (env === 'test') {
-  sequelize = new Sequelize({ dialect: 'sqlite', storage: './test.db' });
+  sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: './test.db',
+    logging: false,
+  });
 }
 
 fs.readdirSync(__dirname)

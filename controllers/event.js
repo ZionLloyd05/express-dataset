@@ -26,8 +26,6 @@ const addEvent = async (eventForCreate) => {
     const actorId = actor.id;
     const repoId = repo.id;
 
-    console.log(created_at);
-
     // setup event model
     let newEvent = {
       id,

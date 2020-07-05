@@ -12,11 +12,22 @@ router.get('/ping', (req, res) => {
 });
 
 // @route   GET /actors
+// @desc    Get all actor route
+// @access  Public
+router.get('/', async (req, res) => {
+  const result = await actorService.getAllActors();
+  const { statusCode, toReturn } = result;
+
+  res.status(statusCode).json(toReturn);
+});
+
+// @route   PUT /actors
 // @desc    Update actor route
+// @params  Actor to Update
 // @access  Public
 router.put('/', async (req, res) => {
   const actorForUpdate = req.body;
-  const result = await actorService.updateActor(actorService);
+  const result = await actorService.updateActor(actorForUpdate);
   const { statusCode, toReturn } = result;
 
   res.status(statusCode).json(toReturn);

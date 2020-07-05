@@ -34,8 +34,10 @@ const getAllEvents = async () => {
   try {
     const events = await eventController.getAllEvents();
     const statusCode = 200;
+
+    const toReturn = events;
     return {
-      toReturn: { body: events },
+      toReturn,
       statusCode,
     };
   } catch (error) {
@@ -54,15 +56,18 @@ const getEventsByActor = async (actorId) => {
     if (IsEmpty(actor)) {
       const statusCode = 404;
       return {
-        toReturn: { body: {} },
+        toReturn: {},
         statusCode,
       };
     }
 
     const events = await eventController.getEventsByActor(actorId);
     const statusCode = 200;
+
+    const toReturn = events;
+
     return {
-      toReturn: { body: events },
+      toReturn,
       statusCode,
     };
   } catch (error) {
