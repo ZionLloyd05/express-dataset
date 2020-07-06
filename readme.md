@@ -20,13 +20,15 @@ $ cd express-dataset
 $ npm install.
 ```
 
-4. Run sequelize to update dev database with existing migrations
+4. Set node_env = development in .env file
+
+5. Run sequelize to update dev database with existing migrations
 
 ```bash
 $ sequelize db:migrate
 ```
 
-5. Start server
+6. Start server
 
 ```bash
 $ npm run server
