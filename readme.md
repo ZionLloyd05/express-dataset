@@ -2,31 +2,31 @@
 
 ## Local Installation
 
-#####1. Clone repository.
+1. Clone repository.
 
 ```bash
 $ git clone https://github.com/ZionLloyd05/express-dataset.git
 ```
 
-#####2. cd into the application folder.
+2. cd into the application folder.
 
 ```bash
 $ cd express-dataset
 ```
 
-#####3. Install Packages
+3. Install Packages
 
 ```bash
 $ npm install.
 ```
 
-#####4. Run sequelize to update dev database with existing migrations
+4. Run sequelize to update dev database with existing migrations
 
 ```bash
 $ sequelize db:migrate
 ```
 
-#####5. Start server
+5. Start server
 
 ```bash
 $ npm run server
@@ -34,15 +34,15 @@ $ npm run server
 
 ## Test
 
-#####1. Set node_env = test in .env file
+1. Set node_env = test in .env file
 
-#####2. Run sequelize to update test database with existing migrations
+2. Run sequelize to update test database with existing migrations
 
 ```bash
 $ sequelize db:migrate
 ```
 
-#####3. Run Test
+3. Run Test
 
 ```bash
 $ npm run test
