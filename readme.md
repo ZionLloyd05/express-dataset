@@ -1,29 +1,51 @@
-# #Node.js Express: Express Challenge API
-
-<br>
+# #Node.js Express: Express Challenge API Documentation
 
 ## Local Installation
 
-1. Clone repository.
+#####1. Clone repository.
 
-2. CD into the application folder.
+```bash
+$ git clone https://github.com/ZionLloyd05/express-dataset.git
+```
 
-3. Install Packages
+#####2. cd into the application folder.
+
+```bash
+$ cd express-dataset
+```
+
+#####3. Install Packages
 
 ```bash
 $ npm install.
 ```
 
-```bash
-4. $ cd ./src/database
-```
+#####4. Run sequelize to update dev database with existing migrations
 
 ```bash
-5. $ sequelize db:migrate
+$ sequelize db:migrate
 ```
 
+#####5. Start server
+
 ```bash
-6. $ npm run server
+$ npm run server
+```
+
+## Test
+
+#####1. Set node_env = test in .env file
+
+#####2. Run sequelize to update test database with existing migrations
+
+```bash
+$ sequelize db:migrate
+```
+
+#####3. Run Test
+
+```bash
+$ npm run test
 ```
 
 #Requirement
