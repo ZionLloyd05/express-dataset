@@ -1,4 +1,5 @@
 const models = require('../models');
+
 const IsEmpty = require('../helpers/isEmpty');
 
 const addRepo = async (repoForCreate, t) => {
@@ -16,7 +17,13 @@ const getRepoById = async (repoId) => {
   return repo;
 };
 
+const eraseAllRepos = async () => {
+  const deleted = await models.repo.destroy({ truncate: true });
+  return null;
+};
+
 module.exports = {
   addRepo,
   getRepoById,
+  eraseAllRepos,
 };

@@ -1,7 +1,12 @@
 const models = require('../models');
 const IsEmpty = require('../helpers/isEmpty');
 const { sequelize } = require('../models');
+
 const db = require('../models');
+
+const moment = require('moment');
+
+const _ = require('lodash');
 
 const addActor = async (actorForCreate, t) => {
   const actorInDb = await getActorById(actorForCreate.id);
@@ -29,16 +34,7 @@ const getAllActors = async () => {
     }
   );
 
-  let formattedActors = [];
-
-  actors.forEach((actor) => {
-    const { id, login, avatar_url } = actor;
-    formattedActors.push({
-      id,
-      login,
-      avatar_url,
-    });
-  });
+  let formattedActors = mapToActorModel(actors);
 
   return formattedActors;
 };
@@ -51,12 +47,49 @@ const updateActor = async (actorForUpdate) => {
   return updated;
 };
 
-const getStreak = () => {};
+const getAllActorOrderedByMaxStreak = async () => {
+  const actors = await db.sequelize.query(
+    `SELECT id, login, avatar_url FROM (SELECT MAX(DATE(e.created_at)) AS l_day, COUNT(DISTINCT DATE(e.created_at)) AS max_streak, a.* FROM actors as a JOIN events AS e ON a.id = e.actorId GROUP BY login) ORDER BY max_streak DESC, l_day DESC, login`,
+    {
+      model: models.actor,
+      mapToModel: true,
+    }
+  );
+
+  let formattedActors = mapToActorModel(actors);
+
+  return formattedActors;
+};
+
+const eraseAllActors = async () => {
+  const deleted = await models.actor.destroy({ truncate: true });
+  return null;
+};
+
+// ---Helper Methods----------------------------
+const mapToActorModel = (obj) => {
+  let formattedActors = [];
+
+  if (IsEmpty(obj)) return;
+
+  obj.forEach((actor) => {
+    const { id, login, avatar_url } = actor;
+    formattedActors.push({
+      id,
+      login,
+      avatar_url,
+    });
+  });
+
+  return formattedActors;
+};
+// ----------------------------------------------
 
 module.exports = {
   updateActor,
   getAllActors,
-  getStreak,
   addActor,
   getActorById,
+  eraseAllActors,
+  getAllActorOrderedByMaxStreak,
 };

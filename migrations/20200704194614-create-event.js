@@ -12,6 +12,7 @@ module.exports = {
       },
       actorId: {
         type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
         allowNull: false,
         references: {
           model: 'actors',
@@ -20,6 +21,7 @@ module.exports = {
       },
       repoId: {
         type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
         allowNull: false,
         references: {
           model: 'repos',

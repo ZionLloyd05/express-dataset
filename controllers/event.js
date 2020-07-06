@@ -1,7 +1,8 @@
 const models = require('../models');
+
 const actorController = require('./actor');
+
 const repoController = require('./repo');
-const IsEmpty = require('../helpers/isEmpty');
 
 const getAllEvents = async () => {
   const events = await models.event.findAll({
@@ -10,6 +11,20 @@ const getAllEvents = async () => {
       { model: models.repo, as: 'repo' },
     ],
     order: [['id', 'ASC']],
+    attributes: {
+      exclude: ['actorId', 'repoId'],
+    },
+  });
+  return events;
+};
+
+const getAllEventsOrderedByEventDate = async () => {
+  const events = await models.event.findAll({
+    include: [
+      { model: models.actor, as: 'actor' },
+      { model: models.repo, as: 'repo' },
+    ],
+    order: [['created_at', 'DESC']],
     attributes: {
       exclude: ['actorId', 'repoId'],
     },
@@ -87,4 +102,5 @@ module.exports = {
   addEvent,
   getEventsByActor,
   eraseAllEvents,
+  getAllEventsOrderedByEventDate,
 };

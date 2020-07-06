@@ -1,8 +1,11 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+
+const router = express.Router();
 
 const actorRouter = require('./actor');
+
 const eventRouter = require('./events');
+
 const eraseEventRouter = require('./eraseEvents');
 
 router.get('/', (req, res) => {

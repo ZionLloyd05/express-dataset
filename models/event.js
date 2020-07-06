@@ -15,8 +15,12 @@ module.exports = (sequelize, DataTypes) => {
     event.belongsTo(models.actor, {
       foriegnKey: 'actorId',
       as: 'actor',
+      onDelete: 'CASCADE',
     });
-    event.belongsTo(models.repo);
+    event.belongsTo(models.repo, {
+      foriegnKey: 'repoId',
+      onDelete: 'CASCADE',
+    });
   };
   return event;
 };

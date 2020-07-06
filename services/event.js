@@ -1,5 +1,9 @@
 const eventController = require('../controllers/event');
+
 const actorController = require('../controllers/actor');
+
+const repoController = require('../controllers/repo');
+
 const IsEmpty = require('../helpers/isEmpty');
 
 const createEvent = async (eventForCreate) => {
@@ -82,6 +86,9 @@ const getEventsByActor = async (actorId) => {
 const eraseAllEvents = async () => {
   try {
     await eventController.eraseAllEvents();
+    await actorController.eraseAllActors();
+    await repoController.eraseAllRepos();
+
     const statusCode = 200;
     return {
       statusCode,

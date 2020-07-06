@@ -1,5 +1,7 @@
 const express = require('express');
+
 const router = express.Router();
+
 const eventService = require('../services/event');
 
 // Routes related to event
@@ -34,7 +36,7 @@ router.get('/actors/:id', async (req, res) => {
 
 // @route   POST /events
 // @desc    Add event route
-// @params  Event Object
+// @params  {object} Event Object
 // @access  Public
 router.post('/', async (req, res) => {
   const newEvent = req.body;

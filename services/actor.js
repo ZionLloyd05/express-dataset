@@ -1,12 +1,34 @@
 const actorController = require('../controllers/actor');
+
 const IsEmpty = require('../helpers/isEmpty');
 
 const getAllActors = async () => {
   try {
     const actors = await actorController.getAllActors();
-    const statusCode = 200;
 
+    const statusCode = 200;
     const toReturn = actors;
+
+    return {
+      toReturn,
+      statusCode,
+    };
+  } catch (error) {
+    console.error(error);
+    const statusCode = 500;
+    return {
+      statusCode,
+    };
+  }
+};
+
+const getAllActorOrderedByMaxStreak = async () => {
+  try {
+    const actors = await actorController.getAllActorOrderedByMaxStreak();
+
+    const statusCode = 200;
+    const toReturn = actors;
+
     return {
       toReturn,
       statusCode,
@@ -29,8 +51,8 @@ const updateActor = async (actorForUpdate) => {
 
     if (IsEmpty(actorInDb)) {
       const statusCode = 404;
-
       const toReturn = {};
+
       return {
         toReturn,
         statusCode,
@@ -52,8 +74,8 @@ const updateActor = async (actorForUpdate) => {
     await actorController.updateActor(actorForUpdate);
 
     const statusCode = 200;
-
     const toReturn = {};
+
     return {
       toReturn,
       statusCode,
@@ -64,4 +86,5 @@ const updateActor = async (actorForUpdate) => {
 module.exports = {
   updateActor,
   getAllActors,
+  getAllActorOrderedByMaxStreak,
 };

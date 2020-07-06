@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
   );
   actor.associate = function (models) {
     // associations can be defined here
-    actor.hasMany(models.event);
+    actor.hasMany(models.event, {
+      onDelete: 'CASCADE',
+    });
   };
   return actor;
 };

@@ -7,11 +7,16 @@ const { envVariables } = require('../helpers');
 const basename = path.basename(__filename);
 
 const env = envVariables.env || 'development';
+// console.log(env);
 const db = {};
 let sequelize;
 
 if (env === 'development') {
-  sequelize = new Sequelize({ dialect: 'sqlite', storage: './event.db' });
+  sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: './event.db',
+    logging: false,
+  });
 } else if (env === 'test') {
   sequelize = new Sequelize({
     dialect: 'sqlite',
