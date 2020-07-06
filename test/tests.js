@@ -91,8 +91,6 @@ describe('git_test ', function () {
               for (let j = 0; j < results.length; j++) {
                 let e = JSON.parse(event[j]);
                 if (e.request.method == 'GET') {
-                  console.log(results[j].body);
-                  console.log(e.response.body);
                   results[j].should.have.status(e.response.status_code);
                   let ar1 = results[j].body;
                   let ar2 = e.response.body;
